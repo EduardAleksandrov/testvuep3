@@ -20,6 +20,7 @@
         <div class="shape"></div>
         {{ item.login }}
       </div>
+      <div ref="observer" class="observer"></div>
     </div>
   </div>
 </template>
@@ -49,8 +50,23 @@ export default {
   },
   mounted() {
     //this.fetchUsers();
-    let data = {loginName: this.loginName, orderRep: this.orderRep, flag:true}
-    this.$store.dispatch("fetchUsers",data);
+    //let data = {loginName: this.loginName, orderRep: this.orderRep, flag:true}
+    //this.$store.dispatch("fetchUsers",data);
+
+    //пересечение и подгрузка страниц
+    const options = {
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+    const callback = (entries, observer) => {
+      if (entries[0].isIntersecting && (this.$store.getters.pageNum <= this.$store.getters.totalPageNum)) {
+        let data = {loginName: this.loginName, orderRep: this.orderRep, flag:false}
+        this.$store.dispatch("fetchUsers",data);
+        console.log(data);
+      }
+    };
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(this.$refs.observer);
   },
   methods: {
     getUserRoute(userIdLink) {
@@ -113,5 +129,9 @@ export default {
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
+}
+.observer {
+  height: 30px;
+  background: #ffffff;
 }
 </style>
