@@ -1,0 +1,23 @@
+https://api.github.com/search/users?q=Eduard&per_page=5&order=asc&page=5
+
+https://api.github.com/search/users?q=""&per_page=5&order=asc&page=5
+
+
+https://api.github.com/search/users?q=repos:>=1000+language:js&per_page=5&order=desc&page=5
+
+https://api.github.com/search/users?q=repos:>=6000+language:javascript&per_page=5&order=desc&page=5
+
+
+https://api.github.com/search/users?q=repos:>=0&per_page=5&order=asc&page=5
+
+
+
+https://api.github.com/search/users?q=eduardaleksandrov+repos:>=4&per_page=5&order=asc&page=1
+
+https://api.github.com/search/users?q=torvalds in:login+repos:>=0&per_page=5&order=desc&page=1
+
+
+
+https://api.github.com/search/users?q=""in:login+repos:>=0&per_page=5&sort=repositories&order=asc&page=1
+
+https://api.github.com/search/users?q=eduardin:login+repos:>=0&per_page=5&sort=repositories&order=asc&page=1
